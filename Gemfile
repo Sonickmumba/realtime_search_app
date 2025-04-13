@@ -1,4 +1,6 @@
+ruby "3.2.1"
 source "https://rubygems.org"
+
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.2"
@@ -8,7 +10,6 @@ gem "pg", "~> 1.1"
 gem "puma", ">= 5.0"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
-ruby "3.2.1"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -51,11 +52,11 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
-group :test do
-  gem 'sidekiq'
+group :production do
+  gem "rails_12factor"
 end
 
-
 group :test do
+  gem 'sidekiq'
   gem 'mock_redis'
 end
