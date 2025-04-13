@@ -151,7 +151,7 @@ cd realtime_search
 
 > Add a link to your deployed project.
 
-- [Live Demo Link](https://google.com)
+- [Live Demo Link](https://realtime-search-app-eb06ff750dcd.herokuapp.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
