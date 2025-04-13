@@ -27,7 +27,18 @@ inputBox.addEventListener("input", () => {
 
 const loadTrending = () => {
   fetch("/api/analytics/trending")
-    .then(res => res.json())
+    .then(async (res) => {
+      if (!res.ok) {
+        throw new Error(`Server error: ${res.status}`);
+      }
+
+      const text = await res.text();
+      if (!text) {
+        return [];
+      }
+
+      return JSON.parse(text);
+    })
     .then(data => {
       const list = document.getElementById("trending-list");
       list.innerHTML = "";
@@ -51,6 +62,7 @@ const loadTrending = () => {
       console.error("Couldn't load trending data:", err);
     });
 };
+
 
 const updateChart = (data) => {
   const labels = data.map(item => item.query);
