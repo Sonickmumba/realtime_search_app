@@ -24,7 +24,7 @@ class FinalizeSearchJob < ApplicationJob
       SearchLog.create!(query: query, ip_address: ip)
     end
 
-    $redis.del(buffer_key)
+    $redis.del(save_key)
     $redis.del(token_key)
   end
 end

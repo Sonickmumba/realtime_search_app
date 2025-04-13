@@ -28,14 +28,8 @@ After you're finished please remove all the comments and instructions!
 For more information on the importance of a professional README for your repositories: https://github.com/microverseinc/curriculum-transversal-skills/blob/main/documentation/articles/readme_best_practices.md
 -->
 
-<div align="center">
-  <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
-  <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
-  <br/>
 
-  <h3><b>Microverse README Template</b></h3>
-
-</div>
+<!--  -->
 
 <!-- TABLE OF CONTENTS -->
 
@@ -63,29 +57,30 @@ For more information on the importance of a professional README for your reposit
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [your_project_name] <a name="about-project"></a>
+# 📖 Realtime search app <a name="about-project"></a>
 
-> Describe your project in 1 or 2 sentences.
+<!-- > Describe your project in 1 or 2 sentences. -->
 
-**[your_project__name]** is a...
+
+**Realtime search app** is a Rails-based tool that captures and stores user search queries in real time. It filters out incomplete input and only saves the final, meaningful search after the user finishes typing.
 
 ## 🛠 Built With <a name="built-with"></a>
 
-### Tech Stack <a name="tech-stack"></a>
+### Tech Stack <a name="tech-stack">Ruby on Rails</a>
 
-> Describe the tech stack and include only the relevant sections that apply to your project.
+<!-- > Describe the tech stack and include only the relevant sections that apply to your project. -->
 
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="https://reactjs.org/">React.js</a></li>
+    <li><a href="https://reactjs.org/">Ruby on Rails</a></li>
   </ul>
 </details>
 
 <details>
   <summary>Server</summary>
   <ul>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
+    <li><a href="https://expressjs.com/">uby on Railsjs</a></li>
   </ul>
 </details>
 
@@ -100,13 +95,55 @@ For more information on the importance of a professional README for your reposit
 
 ### Key Features <a name="key-features"></a>
 
-> Describe between 1-3 key features of the application.
+<!-- > Describe between 1-3 key features of the application. -->
 
-- **[key_feature_1]**
-- **[key_feature_2]**
-- **[key_feature_3]**
+- **[Live Typing Saving]**
+- **[Background Job for Finalization ]**
+- **[Easy Redis Integration]**
+- **[RSpec Test Coverage]**
+- **[Duplicate Prevention]**
+- **[IP-Based Isolation]** 
+- **[Analytics]** 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+## 🔍 What it does
+
+- Captures user input as they type
+- Buffers it in Redis
+- Waits for a short "pause" in typing (debounce)
+- Then saves only the final search query in the database
+
+## 💡 Example
+
+Say someone types:
+
+> What → What is → What is a → What is a good car
+
+We don't want to store all those partial searches.
+
+We **only** save:  
+✅ `What is a good car`
+
+Same for another person typing:
+
+> How → How is → How is emil hajric → How is emil hajric doing
+
+We save:  
+✅ `How is emil hajric doing`
+
+This keeps the search log clean and avoids spammy entries.
+
+## 🛠️ Setup Instructions
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/your-username/realtime_search.git
+cd realtime_search
+
 
 <!-- LIVE DEMO -->
 
@@ -122,7 +159,7 @@ For more information on the importance of a professional README for your reposit
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-> Describe how a new developer could make use of your project.
+<!-- > Describe how a new developer could make use of your project. -->
 
 To get a local copy up and running, follow these steps.
 
@@ -130,26 +167,29 @@ To get a local copy up and running, follow these steps.
 
 In order to run this project you need:
 
-<!--
 Example command:
 
 ```sh
  gem install rails
 ```
- -->
 
 ### Setup
 
 Clone this repository to your desired folder:
 
-<!--
+
 Example commands:
 
 ```sh
   cd my-folder
-  git clone git@github.com:myaccount/my-project.git
+  git clone https://github.com/Sonickmumba/realtime_search_app.git
+  bundle install
+
+  rails db:create
+  rails db:migrate
+
 ```
---->
+
 
 ### Install
 
@@ -168,25 +208,27 @@ Example command:
 
 To run the project, execute the following command:
 
-<!--
+
 Example command:
 
 ```sh
-  rails server
+  redis-server
+  rails s
 ```
---->
+-
 
 ### Run tests
 
 To run tests, run the following command:
 
-<!--
+
 Example command:
 
 ```sh
-  bin/rails test test/models/article_test.rb
+  bundle exec rails db:test:prepare
+  bundle exec rspec
 ```
---->
+-
 
 ### Deployment
 
@@ -206,31 +248,26 @@ Example:
 
 ## 👥 Authors <a name="authors"></a>
 
-> Mention all of the collaborators of this project.
+<!-- > Mention all of the collaborators of this project. -->
 
 👤 **Author1**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@Sonickmumba](https://github.com/Sonickmumba)
+- Twitter: [@MumbaSonick](https://x.com/MumbaSonick)
+- LinkedIn: [Sonick Mumba](https://linkedin.com/in/sonickmumba)
 
-👤 **Author2**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 <!-- FUTURE FEATURES -->
 
-## 🔭 Future Features <a name="future-features"></a>
+<!-- ## 🔭 Future Features <a name="future-features"></a>
 
 > Describe 1 - 3 features you will add to the project.
 
 - [ ] **[new_feature_1]**
 - [ ] **[new_feature_2]**
-- [ ] **[new_feature_3]**
+- [ ] **[new_feature_3]** -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -265,7 +302,7 @@ I would like to thank...
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FAQ (optional) -->
-
+<!-- 
 ## ❓ FAQ (OPTIONAL) <a name="faq"></a>
 
 > Add at least 2 questions new developers would ask when they decide to use your project.
@@ -278,7 +315,7 @@ I would like to thank...
 
   - [Answer_2]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 <!-- LICENSE -->
 
