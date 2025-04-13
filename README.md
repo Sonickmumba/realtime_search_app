@@ -107,6 +107,44 @@ For more information on the importance of a professional README for your reposit
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+
+## 🔍 What it does
+
+- Captures user input as they type
+- Buffers it in Redis
+- Waits for a short "pause" in typing (debounce)
+- Then saves only the final search query in the database
+
+## 💡 Example
+
+Say someone types:
+
+> What → What is → What is a → What is a good car
+
+We don't want to store all those partial searches.
+
+We **only** save:  
+✅ `What is a good car`
+
+Same for another person typing:
+
+> How → How is → How is emil hajric → How is emil hajric doing
+
+We save:  
+✅ `How is emil hajric doing`
+
+This keeps the search log clean and avoids spammy entries.
+
+## 🛠️ Setup Instructions
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/your-username/realtime_search.git
+cd realtime_search
+
+
 <!-- LIVE DEMO -->
 
 ## 🚀 Live Demo <a name="live-demo"></a>
@@ -121,7 +159,7 @@ For more information on the importance of a professional README for your reposit
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-> Describe how a new developer could make use of your project.
+<!-- > Describe how a new developer could make use of your project. -->
 
 To get a local copy up and running, follow these steps.
 
