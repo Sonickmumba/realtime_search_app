@@ -8,6 +8,9 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 # that will avoid rails generators crashing because migrations haven't been run yet
 # return unless Rails.env.test?
 require 'rspec/rails'
+require 'sidekiq/testing'
+Sidekiq::Testing.fake!
+require 'mock_redis'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -42,6 +45,21 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+
+  RSpec.configure do |config|
+    config.before(:each) do
+      ActiveJob::Base.queue_adapter = :test
+    end
+  end
+
+  config.before(:each) do
+    Sidekiq::Worker.clear_all
+    $redis.flushdb # Clear redis between tests
+  end
+
+  config.before(:each) do
+    $redis = MockRedis.new
+  end
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
