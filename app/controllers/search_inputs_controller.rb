@@ -12,11 +12,11 @@ class SearchInputsController < ApplicationController
     save_key = "search_buffer:#{user_ip}"
     token_key = "search_token:#{user_ip}"
 
-    $redis.set(save_key, query, ex: 5)
+    $redis.set(save_key, input_query, ex: 5)
     $redis.set(token_key, token, ex: 5)
 
-    FinalSearchJob.set(wait: 3.seconds).perform_later(user_ip, token)
+    FinalizeSearchJob.set(wait: 3.seconds).perform_later(user_ip, token)
 
-    render json: {status: "Saved", query: query}, status: :okay
+    render json: {status: "Saved", query: input_query}, status: :ok
   end
 end

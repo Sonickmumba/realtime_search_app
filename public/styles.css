@@ -1,0 +1,31 @@
+body {
+  padding: 2em;
+  font-family: sans-serif;
+}
+
+#search-box {
+  padding: 0.5em;
+  font-size: 1rem;
+  width: 60%;
+  max-width: 300px;
+}
+
+#trending {
+  margin-top: 2em;
+  padding: 1em;
+  border-top: 1px solid #ccc;
+}
+
+#trending h2 {
+  margin-bottom: 0.5em;
+}
+
+#trending-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1em;
+}
+
+#trending-list li {
+  margin: 0.3em 0;
+}
