@@ -2,4 +2,4 @@
 
 require 'redis'
 
-$redis = Redis.new(url: ENV["REDIS_URL"] || "redis://localhost:6379")
+$redis = Redis.new(url: ENV["REDISCLOUD_URL"] || "redis://localhost:6379")
